@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 import QZXing 2.3
+import QtMultimedia 5.0
 /*!
     \brief MainView with a Label and Button elements.
 */
@@ -27,9 +28,31 @@ MainView {
     Page {
         title: i18n.tr("OpenFoodFacts")
 
+        Camera {
+                id: camera
+                imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+                exposure {
+                    exposureCompensation: -1.0
+                    exposureMode: Camera.ExposurePortrait
+                }
+                flash.mode: Camera.FlashRedEyeReduction
+                imageCapture {
+                    onImageCaptured: {
+                        photoPreview.source = preview  // Show the preview in an Image
+                    }
+                }
+            }
+        VideoOutput {
+            source: camera
+            anchors.fill: parent
+            focus : visible // to receive focus and capture key events when visible
+        }
+        Image {
+            id: photoPreview
+        }
         Image{
             id:imageToDecode
-            source: "barcode.jpg"
+            //source: "barcode.jpg"
             MouseArea {
                 anchors.fill: parent;
                 onClicked: {

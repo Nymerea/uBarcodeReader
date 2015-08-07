@@ -1,13 +1,13 @@
+
 # This is the basic qmake template for the Ubuntu-SDK
 # it handles creation and installation of the manifest
 # file and takes care of subprojects
 TEMPLATE = subdirs
-
 #load Ubuntu specific features
 load(ubuntu-click)
 
-SUBDIRS += OpenFoodFacts \
-           QZXing
+SUBDIRS +=  OpenFoodFacts \
+            QZXing
 
 # specify the manifest file, this file is required for click
 # packaging and for the IDE to create runconfigurations

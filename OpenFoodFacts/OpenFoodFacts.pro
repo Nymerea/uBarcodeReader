@@ -1,7 +1,9 @@
 TEMPLATE = aux
 TARGET = OpenFoodFacts
-
 RESOURCES += OpenFoodFacts.qrc
+
+QT += quick qml gui
+
 
 QML_FILES += $$files(*.qml,true) \
              $$files(*.js,true)
@@ -24,4 +26,7 @@ config_files.path = /OpenFoodFacts
 config_files.files += $${CONF_FILES}
 
 INSTALLS+=config_files qml_files
+
+SOURCES += \
+    main.cpp
 

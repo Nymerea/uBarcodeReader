@@ -1,6 +1,5 @@
-TEMPLATE = aux
+TEMPLATE = app
 TARGET = OpenFoodFacts
-RESOURCES += OpenFoodFacts.qrc
 
 QT += quick qml gui
 

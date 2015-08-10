@@ -1,0 +1,8 @@
+.moc
+.obj
+Makefile
+debian/files
+debian/qtdeclarative5-qzxing-plugin*
+*.pro.user
+*.so
+*~

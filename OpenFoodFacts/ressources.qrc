@@ -221,5 +221,7 @@
         <file>../QZXing/QZXing_global.h</file>
         <file>../QZXing/qzxing_plugin.cpp</file>
         <file>../QZXing/qzxing_plugin.h</file>
+        <file>../QZXing/plugins.qmltypes</file>
+        <file>../QZXing/qmldir</file>
     </qresource>
 </RCC>

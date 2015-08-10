@@ -25,28 +25,38 @@ MainView {
     width: units.gu(100)
     height: units.gu(75)
 
+    Connections {
+        target: imgGraber
+    }
+
     Page {
         title: i18n.tr("OpenFoodFacts")
 
         Camera {
-                objectName: player
-                imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
-                exposure {
-                    exposureCompensation: -1.0
-                    exposureMode: Camera.ExposurePortrait
-                }
-                flash.mode: Camera.FlashRedEyeReduction
-                imageCapture {
-                    onImageCaptured: {
-                        photoPreview.source = preview  // Show the preview in an Image
-                    }
+            id:camera
+            objectName: camera
+            imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+            exposure {
+                exposureCompensation: -1.0
+                exposureMode: Camera.ExposurePortrait
+            }
+            flash.mode: Camera.FlashRedEyeReduction
+            imageCapture {
+                onImageCaptured: {
+                    photoPreview.source = preview  // Show the preview in an Image
                 }
             }
-        /*VideoOutput {
+        }
+        VideoOutput {
             source: camera
             anchors.fill: parent
             focus : visible // to receive focus and capture key events when visible
-        }*/
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: { imgGraber.tryDebug() }
+            }
+        }
         Image {
             id: photoPreview
         }

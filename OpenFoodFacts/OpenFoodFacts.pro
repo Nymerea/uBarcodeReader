@@ -27,5 +27,14 @@ config_files.files += $${CONF_FILES}
 INSTALLS+=config_files qml_files
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    ImageGraber.cpp
+
+HEADERS += \
+    ImageGraber.h
+
+RESOURCES += \
+    ressources.qrc
+
+
 

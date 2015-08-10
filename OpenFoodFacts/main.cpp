@@ -1,27 +1,25 @@
-
 #include <QGuiApplication>
 #include <QtQuick/QQuickView>
 #include <QtQml/QtQml>
 #include <QVideoProbe>
 #include <QVideoFrame>
-#include <ImageGraber.h>
+#include <QDecoder.h>
 
 int main(int argc, char *argv[])
 {
     QGuiApplication a(argc, argv);
-
     QQuickView view;
 
-
-    ImageGraber graber;
-    view.rootContext()->setContextProperty("imgGraber", &graber);
+    QDecoder decoder;
+    view.rootContext()->setContextProperty("qDecoder", &decoder);
 
     view.setResizeMode(QQuickView::SizeRootObjectToView);
+    //view.setSource(QUrl::fromLocalFile("./Main.qml"));
     view.setSource(QUrl("qrc:/pages/Main.qml"));
     view.show();
 
 
-   /* QObject *object = view.rootObject();
+    /* QObject *object = view.rootObject();
 
     QObject *player = object->findChild<QObject*>("player");
 

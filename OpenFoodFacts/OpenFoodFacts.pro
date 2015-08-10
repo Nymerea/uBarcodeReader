@@ -28,10 +28,12 @@ INSTALLS+=config_files qml_files
 
 SOURCES += \
     main.cpp \
-    ImageGraber.cpp
+    QDecoder.cpp
 
 HEADERS += \
-    ImageGraber.h
+    QDecoder.h
+
+
 
 RESOURCES += \
     ressources.qrc

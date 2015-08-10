@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
-import QZXing 2.3
+//import QZXing 2.3
 import QtMultimedia 5.0
 /*!
     \brief MainView with a Label and Button elements.
@@ -54,7 +54,7 @@ MainView {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: { imgGraber.tryDebug() }
+                onClicked: { qDecoder.tryDebug() }
             }
         }
         Image {
@@ -73,7 +73,7 @@ MainView {
 
         }
 
-        QZXing{
+        /*QZXing{
             id: decoder
 
             //enabledDecoders: QZXing.DecoderFormat_EAN_13
@@ -83,7 +83,7 @@ MainView {
             onTagFound: console.log("Barcode data: " + tag)
 
             onDecodingFinished: console.log("Decoding finished " + (succeeded==true ? "successfully" :    "unsuccessfully") )
-        }
+        }*/
     }
 }
 

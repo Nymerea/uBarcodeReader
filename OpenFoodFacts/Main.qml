@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
-//import QZXing 2.3
+import QZXing 2.3
 import QtMultimedia 5.0
 /*!
     \brief MainView with a Label and Button elements.

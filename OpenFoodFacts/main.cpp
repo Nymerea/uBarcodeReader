@@ -1,18 +1,17 @@
 #include <QGuiApplication>
 #include <QtQuick/QQuickView>
 #include <QtQml/QtQml>
- #include <QQmlEngine>
 #include <QDecoder.h>
 
 int main(int argc, char *argv[])
 {
-    /*QQmlEngine engine;
-    engine.addImportPath("../QZXing/");*/
+
     QGuiApplication a(argc, argv);
     QQuickView view;
 
     QDecoder decoder;
     view.rootContext()->setContextProperty("qDecoder", &decoder);
+    view.engine()->addImportPath("..");
 
     view.setResizeMode(QQuickView::SizeRootObjectToView);
     //view.setSource(QUrl::fromLocalFile("./Main.qml"));

@@ -26,14 +26,18 @@ config_files.files += $${CONF_FILES}
 
 INSTALLS+=config_files qml_files
 
+#INCLUDEPATH += ../QZXing/
+#DEPENDPATH += ../QZXing/
+
+LIBS += -L../QZXing/ -lQZXing
+
 SOURCES += \
     main.cpp \
-    QDecoder.cpp
+    QDecoder.cpp \
 
 HEADERS += \
-    QDecoder.h
-
-
+    QDecoder.h \
+    ../QZXing/QZXing.h
 
 RESOURCES += \
     ressources.qrc

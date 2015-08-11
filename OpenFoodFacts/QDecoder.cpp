@@ -41,6 +41,9 @@ void QDecoder::grabWindow()
     }
 
     qDebug() << "clicked on grab windows";
-    QZXing qzxingDecoder;
+    QImage img = mainWindows->grabWindow();
+
+    /*QZXing qzxingDecoder;
+    qDebug() << qzxingDecoder.decodeImage(img);*/
 
 }

@@ -32,7 +32,7 @@ UBUNTU_TRANSLATION_SOURCES+= \
 UBUNTU_PO_FILES+=$$files(po/*.po)
 
 aptest.target   = autopilot
-aptest.commands = QML2_IMPORT_PATH=$$OUT_PWD/backend bash $$PWD/app/tests/autopilot/run
+aptest.commands = QML2_IMPORT_PATH=$$OUT_PWD/QZXing bash $$PWD/app/tests/autopilot/run
 aptest.depends  = sub-app sub-backend-App
 
 unittest.target   = check

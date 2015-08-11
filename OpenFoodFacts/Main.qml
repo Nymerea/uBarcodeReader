@@ -54,7 +54,7 @@ MainView {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: { qDecoder.tryDebug() }
+                onClicked: { qDecoder.grabWindow() }
             }
         }
         Image {

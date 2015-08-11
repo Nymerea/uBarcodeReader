@@ -1,8 +1,6 @@
 #include <QGuiApplication>
 #include <QtQuick/QQuickView>
 #include <QtQml/QtQml>
-#include <QVideoProbe>
-#include <QVideoFrame>
 #include <QDecoder.h>
 
 int main(int argc, char *argv[])
@@ -17,17 +15,6 @@ int main(int argc, char *argv[])
     //view.setSource(QUrl::fromLocalFile("./Main.qml"));
     view.setSource(QUrl("qrc:/pages/Main.qml"));
     view.show();
-
-
-    /* QObject *object = view.rootObject();
-
-    QObject *player = object->findChild<QObject*>("player");
-
-    QVideoProbe *probe = new QVideoProbe;
-
-    connect(probe, SIGNAL(videoFrameProbed(QVideoFrame)), this, SLOT(processFrame(QVideoFrame)));
-
-    probe->setSource(player); // Returns true, hopefully.*/
 
     return a.exec();
 }

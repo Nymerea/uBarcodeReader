@@ -1,7 +1,7 @@
 #include <QDecoder.h>
 #include <QGuiApplication>
 #include <QWindow>
-
+#include "../QZXing/QZXing.h"
 
 
 QDecoder::QDecoder(QObject *parent) :
@@ -31,4 +31,16 @@ void QDecoder::tryDebug()
         qDebug() << "main window, not null";
     }
     qDebug() << "clicked";
+}
+
+void QDecoder::grabWindow()
+{
+    if (!mainWindows) {
+        qDebug() << "unable to find main window";
+        return;
+    }
+
+    qDebug() << "clicked on grab windows";
+    QZXing qzxingDecoder;
+
 }

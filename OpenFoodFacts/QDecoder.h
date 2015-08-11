@@ -12,6 +12,7 @@ class QDecoder : public QObject, public QQuickImageProvider
 public :
     explicit QDecoder(QObject *parent=0);
     Q_INVOKABLE void tryDebug();
+    Q_INVOKABLE void grabWindow();
 
 private:
     QQuickWindow *mainWindows;

@@ -2,11 +2,9 @@ import QtQuick 2.0
 import Ubuntu.Components 1.1
 import QZXing 2.3
 import QtMultimedia 5.0
-/*!
-    \brief MainView with a Label and Button elements.
-*/
 
 MainView {
+    id:mainView;
     // objectName for functional testing purposes (autopilot-qt5)
     objectName: "mainView"
 
@@ -25,12 +23,16 @@ MainView {
     width: units.gu(100)
     height: units.gu(75)
 
-    Connections {
+    /*Connections {
         target: imgGraber
-    }
+    }*/
 
     Page {
         title: i18n.tr("OpenFoodFacts")
+
+        Component.onCompleted: {
+            qDecoder.scanRect = Qt.rect(mainView.mapFromItem(videoOutput, 0, 0).x, mainView.mapFromItem(videoOutput, 0, 0).y, videoOutput.width, videoOutput.height)
+        }
 
         Camera {
             id:camera
@@ -48,6 +50,7 @@ MainView {
             }
         }
         VideoOutput {
+            id: videoOutput
             source: camera
             anchors.fill: parent
             focus : visible // to receive focus and capture key events when visible
@@ -57,12 +60,11 @@ MainView {
                 onClicked: { qDecoder.grabWindow() }
             }
         }
-        Image {
-            id: photoPreview
-        }
-        Image{
+
+       /* Image{
             id:imageToDecode
-            //source: "barcode.jpg"
+            source: "barcode.jpg"
+            visible:true
             MouseArea {
                 anchors.fill: parent;
                 onClicked: {
@@ -73,7 +75,7 @@ MainView {
 
         }
 
-        /*QZXing{
+        QZXing{
             id: decoder
 
             //enabledDecoders: QZXing.DecoderFormat_EAN_13

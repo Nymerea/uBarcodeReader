@@ -8,13 +8,27 @@
 class QDecoder : public QObject, public QQuickImageProvider
 {
     Q_OBJECT
+    Q_PROPERTY(QRect scanRect READ scanRect WRITE setScanRect NOTIFY scanRectChanged)
 
 public :
     explicit QDecoder(QObject *parent=0);
     Q_INVOKABLE void tryDebug();
     Q_INVOKABLE void grabWindow();
+    Q_INVOKABLE QRect scanRect() const;
+    Q_INVOKABLE void setScanRect(const QRect &rect);
+    Q_INVOKABLE bool scanning() const;
 
 private:
     QQuickWindow *mainWindows;
+    QRect m_scanRect;
+
+signals:
+    void scanRectChanged();
+
+public slots:
+
+    void decodingImage();
+    void tagFound(QString tag);
+    void imageDecoded(bool succeeded);
 };
 #endif // QDECODER_H

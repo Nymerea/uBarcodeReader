@@ -41,18 +41,21 @@ void QDecoder::grabWindow()
     }
 
     qDebug() << "clicked on grab windows";
-    /*QImage img = mainWindows->grabWindow();
+    QImage img;
 
+    QImage window = mainWindows->grabWindow();
     if (m_scanRect.isValid()) {
         qDebug() << "try to remove application windows into image";
-        img = img.copy(m_scanRect);
-    }*/
+        img = window.copy(m_scanRect);
+    }
 
     QZXing qzxingDecoder;
     QObject::connect(&qzxingDecoder, SIGNAL(decodingStarted()), this, SLOT(decodingImage()));
     QObject::connect(&qzxingDecoder, SIGNAL(decodingFinished(bool)), this, SLOT(imageDecoded(bool)));
     QObject::connect(&qzxingDecoder, SIGNAL(tagFound(QString)), this, SLOT(tagFound(QString)));
-    qzxingDecoder.decodeImageFromFile("/home/morgan/qt/abc.png");
+    qzxingDecoder.decodeImage(img,1000,1000,true);
+   // qzxingDecoder.decodeImageFromFile("/home/morgan/qt/uBarcodeReader/OpenFoodFacts/barcode.jpg", 1000,1000, true);
+    //emit barcodeFound();
 
 
 }
@@ -77,6 +80,11 @@ bool QDecoder::scanning() const
     qDebug() << "scaning ...";
 }
 
+QString QDecoder::barCode()
+{
+    return this->barcode;
+}
+
 void QDecoder::decodingImage()
 {
     qDebug() << "decoding image started";
@@ -84,7 +92,7 @@ void QDecoder::decodingImage()
 
 void QDecoder::tagFound(QString tag)
 {
-    qDebug() << "tag found";
+    qDebug() << "tag found : " << tag;
 }
 
 void QDecoder::imageDecoded(bool succeeded)

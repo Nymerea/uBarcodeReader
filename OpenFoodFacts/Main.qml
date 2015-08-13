@@ -23,11 +23,22 @@ MainView {
     width: units.gu(100)
     height: units.gu(75)
 
-    /*Connections {
-        target: imgGraber
-    }*/
+    Connections {
+        target: qDecoder
+        onBarCodeChanged : {
+           pageStack.push(resultPage);
+        }
+    }
+
+    PageStack {
+          id: pageStack
+          Component.onCompleted: {
+              pageStack.push(scanPage)
+          }
+      }
 
     Page {
+        id: scanPage
         title: i18n.tr("OpenFoodFacts")
 
         Component.onCompleted: {
@@ -36,18 +47,16 @@ MainView {
 
         Camera {
             id:camera
-            objectName: camera
+            //objectName: camera
             imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
             exposure {
                 exposureCompensation: -1.0
                 exposureMode: Camera.ExposurePortrait
             }
             flash.mode: Camera.FlashRedEyeReduction
-            imageCapture {
-                onImageCaptured: {
-                    photoPreview.source = preview  // Show the preview in an Image
-                }
-            }
+
+            focus.focusMode: Camera.FocusContinuous
+            focus.focusPointMode: Camera.FocusPointAuto
         }
         VideoOutput {
             id: videoOutput
@@ -57,7 +66,11 @@ MainView {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: { qDecoder.grabWindow() }
+                onClicked: { qDecoder.grabWindow();
+
+
+
+                }
             }
         }
 
@@ -86,6 +99,14 @@ MainView {
 
             onDecodingFinished: console.log("Decoding finished " + (succeeded==true ? "successfully" :    "unsuccessfully") )
         }*/
+    }
+
+    Page {
+        id:resultPage
+        Rectangle {
+            height: units.gu(15)
+            width: units.gu(15)
+        }
     }
 }
 

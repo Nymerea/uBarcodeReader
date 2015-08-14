@@ -6,12 +6,10 @@
     "hooks": {
         "OpenFoodFacts": {
             "apparmor": "OpenFoodFacts/OpenFoodFacts.apparmor",
-            "desktop":  "OpenFoodFacts/OpenFoodFacts.desktop"
+            "desktop": "OpenFoodFacts/OpenFoodFacts.desktop"
         }
     },
-    "version": "0.1",
+    "version": "0.2",
     "maintainer": "Ubuntouch-fr team <no@mail.com>",
-    "framework" : "ubuntu-sdk-15.04"
+    "framework": "ubuntu-sdk-15.04"
 }
-
-

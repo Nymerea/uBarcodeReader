@@ -12,11 +12,9 @@ class QDecoder : public QObject, public QQuickImageProvider
     Q_PROPERTY(QString barCode READ barCode NOTIFY barcodeFound)
 public :
     explicit QDecoder(QObject *parent=0);
-    Q_INVOKABLE void tryDebug();
     Q_INVOKABLE void grabWindow();
     Q_INVOKABLE QRect scanRect() const;
     Q_INVOKABLE void setScanRect(const QRect &rect);
-    Q_INVOKABLE bool scanning() const;
     Q_INVOKABLE QString barCode() ;
 private:
     QQuickWindow *mainWindows;

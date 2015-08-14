@@ -22,17 +22,6 @@ QDecoder::QDecoder(QObject *parent) :
 
 }
 
-
-void QDecoder::tryDebug()
-{
-    if(!mainWindows) {
-        qDebug() << "main window, null";
-    } else {
-        qDebug() << "main window, not null";
-    }
-    qDebug() << "clicked";
-}
-
 void QDecoder::grabWindow()
 {
     if (!mainWindows) {
@@ -75,10 +64,6 @@ void QDecoder::setScanRect(const QRect &rect)
     }
 }
 
-bool QDecoder::scanning() const
-{
-    qDebug() << "scaning ...";
-}
 
 QString QDecoder::barCode()
 {

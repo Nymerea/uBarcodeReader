@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import Ubuntu.Components 1.2
 //import QZXing 2.3
 import QtMultimedia 5.0

@@ -1,6 +1,6 @@
 import QtQuick 2.0
-import Ubuntu.Components 1.1
-import QZXing 2.3
+import Ubuntu.Components 1.2
+//import QZXing 2.3
 import QtMultimedia 5.0
 
 MainView {
@@ -18,7 +18,7 @@ MainView {
     //automaticOrientation: true
 
     // Removes the old toolbar and enables new features of the new header.
-    useDeprecatedToolbar: false
+    //useDeprecatedToolbar: false
 
     width: units.gu(100)
     height: units.gu(75)

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QQuickView view;
 
     QDecoder decoder;
-    view.rootContext()->setContextProperty("qDecoder", &decoder);
+    view.engine()->rootContext()->setContextProperty("qDecoder", &decoder);
     view.engine()->addImportPath("..");
 
     view.setResizeMode(QQuickView::SizeRootObjectToView);

@@ -28,16 +28,16 @@ MainView {
     Connections {
         target: qDecoder
         onBarCodeChanged : {
-           pageStack.push(resultPage);
+            pageStack.push(resultPage);
         }
     }
 
     PageStack {
-          id: pageStack
-          Component.onCompleted: {
-              pageStack.push(scanPage)
-          }
-      }
+        id: pageStack
+        Component.onCompleted: {
+            pageStack.push(scanPage)
+        }
+    }
 
     Page {
         id: scanPage
@@ -60,10 +60,17 @@ MainView {
             focus.focusMode: Camera.FocusContinuous
             focus.focusPointMode: Camera.FocusPointAuto
         }
+
         VideoOutput {
             id: videoOutput
             source: camera
             anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            orientation: {
+                console.log("device orientation : " +device.naturalOrientation);
+                device.naturalOrientation === "portrait"  ? -90 : 0
+            }
+
             focus : visible // to receive focus and capture key events when visible
 
             MouseArea {
@@ -76,7 +83,7 @@ MainView {
             }
         }
 
-       /* Image{
+        /* Image{
             id:imageToDecode
             source: "barcode.jpg"
             visible:true
@@ -101,6 +108,13 @@ MainView {
 
             onDecodingFinished: console.log("Decoding finished " + (succeeded==true ? "successfully" :    "unsuccessfully") )
         }*/
+
+        // We must use Item element because Screen component does not work with QtObject
+        Item {
+            id: device
+            property string naturalOrientation: Screen.primaryOrientation == Qt.LandscapeOrientation ? "landscape" : "portrait"
+            visible: false
+        }
     }
 
     Page {
